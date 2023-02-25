@@ -1,5 +1,17 @@
-import {createPinia} from "pinia";
+import {defineStore} from "pinia";
 
-const pinia = createPinia();
+const store = defineStore("footprint", {
+        state: () => ({count: 3}),
+        getters: {
+            doubleData: (state) => state.count * 2
+        },
 
-export default pinia;
+        actions: {
+            increment() {
+                this.count += 1;
+            }
+        }
+    }
+)
+
+export const useFootprintStore = store;
